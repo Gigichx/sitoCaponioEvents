@@ -200,3 +200,32 @@ rippleStyle.textContent = `
             }
         `;
 document.head.appendChild(rippleStyle);
+
+// Portfolio mobile tap/click functionality
+document.querySelectorAll('.portfolio-item').forEach(item => {
+    // Hover effect per desktop
+    item.addEventListener('mouseenter', function () {
+        this.style.zIndex = '10';
+    });
+
+    item.addEventListener('mouseleave', function () {
+        this.style.zIndex = '1';
+    });
+
+    // Click/tap functionality
+    item.addEventListener('click', function (e) {
+        // Se il click è sul link "Vedi di più", non fare nulla (lascia che il link funzioni)
+        if (e.target.closest('.portfolio-link')) {
+            return;
+        }
+
+        // Altrimenti mostra/nascondi le info
+        document.querySelectorAll('.portfolio-item').forEach(otherItem => {
+            if (otherItem !== this) {
+                otherItem.classList.remove('active');
+            }
+        });
+
+        this.classList.toggle('active');
+    });
+});
