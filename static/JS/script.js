@@ -57,8 +57,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all service cards, portfolio items, and sections
-document.querySelectorAll('.service-card, .portfolio-item, .contact-item').forEach(el => {
+document.querySelectorAll('.service-card, .portfolio-item, .contact-item, .strumentazione-card, .collaboratore-card, .album-item, .descrizione-card').forEach(el => {
     observer.observe(el);
 });
 
