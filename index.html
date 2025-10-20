@@ -50,7 +50,7 @@
     <!-- About Section -->
     <section id="chi-siamo">
         <h2 class="section-title">Chi Siamo</h2>
-        <p class="section-subtitle">La passione per gli eventi è nel nostro DNA</p>
+        <p class="section-subtitle text-center">La passione per gli eventi è nel nostro DNA</p>
         <div class="about-content">
             <div class="about-text">
                 <h3>La Nostra Storia</h3>
@@ -116,96 +116,160 @@
     </section>
 
     <section id="strumentazione">
-        <h2 class="section-title">Strumentazione Audio &amp; Luci</h2>
+        <h2 class="section-title text-center">Strumentazione Audio &amp; Luci</h2>
         <p class="section-subtitle">Tecnologia professionale per atmosfere su misura</p>
-        <div class="strumentazione-grid">
-            <div class="strumentazione-card text-center">
-                <div class="strumentazione-icon"><i class="fa-solid fa-volume-high"></i></div>
-                <h3>Audio Immersivo</h3>
-                <p>Sistemi line-array, mixer digitali e microfoni professionali per una resa sonora impeccabile.</p>
-                <div class="strumentazione-tags">
-                    <span>Line Array</span>
-                    <span>Wireless</span>
-                    <span>In-Ear</span>
+        <div id="strumentazioneCarousel" class="carousel slide section-carousel" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#strumentazioneCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#strumentazioneCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-5">
+                            <div class="strumentazione-card text-center h-100">
+                                <div class="strumentazione-icon"><i class="fa-solid fa-volume-high"></i></div>
+                                <h3>Audio Immersivo</h3>
+                                <p>Sistemi line-array, mixer digitali e microfoni professionali per una resa sonora impeccabile.</p>
+                                <div class="strumentazione-tags">
+                                    <span>Line Array</span>
+                                    <span>Wireless</span>
+                                    <span>In-Ear</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5">
+                            <div class="strumentazione-card text-center h-100">
+                                <div class="strumentazione-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                <h3>Luci Scenografiche</h3>
+                                <p>Proiettori intelligenti, beam dinamici e wall washer per creare ambienti spettacolari.</p>
+                                <div class="strumentazione-tags">
+                                    <span>Moving Head</span>
+                                    <span>Pixel Wall</span>
+                                    <span>LED</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-5">
+                            <div class="strumentazione-card text-center h-100">
+                                <div class="strumentazione-icon"><i class="fa-solid fa-sliders"></i></div>
+                                <h3>Regia Tecnologica</h3>
+                                <p>Control room modulare con software proprietari e integrazione multimediale in tempo reale.</p>
+                                <div class="strumentazione-tags">
+                                    <span>Timecode</span>
+                                    <span>Show Control</span>
+                                    <span>Ridondanza</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5">
+                            <div class="strumentazione-card text-center h-100">
+                                <div class="strumentazione-icon"><i class="fa-solid fa-wave-square"></i></div>
+                                <h3>Esperienze Immersive</h3>
+                                <p>Installazioni interattive, mapping 3D e sound design su misura per format esclusivi.</p>
+                                <div class="strumentazione-tags">
+                                    <span>Mapping</span>
+                                    <span>Interactive</span>
+                                    <span>360°</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="strumentazione-card text-center">
-                <div class="strumentazione-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                <h3>Luci Scenografiche</h3>
-                <p>Proiettori intelligenti, beam dinamici e wall washer per creare ambienti spettacolari.</p>
-                <div class="strumentazione-tags">
-                    <span>Moving Head</span>
-                    <span>Pixel Wall</span>
-                    <span>LED</span>
-                </div>
-            </div>
-            <div class="strumentazione-card text-center">
-                <div class="strumentazione-icon"><i class="fa-solid fa-sliders"></i></div>
-                <h3>Regia Tecnologica</h3>
-                <p>Control room modulare con software proprietari e integrazione multimediale in tempo reale.</p>
-                <div class="strumentazione-tags">
-                    <span>Timecode</span>
-                    <span>Show Control</span>
-                    <span>Ridondanza</span>
-                </div>
-            </div>
-            <div class="strumentazione-card text-center">
-                <div class="strumentazione-icon"><i class="fa-solid fa-wave-square"></i></div>
-                <h3>Esperienze Immersive</h3>
-                <p>Installazioni interattive, mapping 3D e sound design su misura per format esclusivi.</p>
-                <div class="strumentazione-tags">
-                    <span>Mapping</span>
-                    <span>Interactive</span>
-                    <span>360°</span>
-                </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#strumentazioneCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Precedente</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#strumentazioneCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Successivo</span>
+            </button>
         </div>
     </section>
 
     <section id="collaboratori">
-        <h2 class="section-title">Collaboratori</h2>
+        <h2 class="section-title text-center">Collaboratori</h2>
         <p class="section-subtitle">Una rete di professionisti che condivide la nostra visione</p>
-        <div class="collaboratori-grid">
-            <div class="collaboratore-card text-center">
-                <div class="collaboratore-avatar">GC</div>
-                <h3>Giuseppe Caponio</h3>
-                <p class="collaboratore-role">Creative Event Director</p>
-                <p>Guida la regia creativa con sensibilità sartoriale tra storytelling, design e produzione tecnica.</p>
-                <div class="collaboratore-tags">
-                    <span>Concept</span>
-                    <span>Experience Design</span>
+        <div id="collaboratoriCarousel" class="carousel slide section-carousel" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#collaboratoriCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#collaboratoriCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-5">
+                            <div class="collaboratore-card text-center h-100">
+                                <div class="collaboratore-avatar">GC</div>
+                                <h3>Giuseppe Caponio</h3>
+                                <p class="collaboratore-role">Creative Event Director</p>
+                                <p>Guida la regia creativa con sensibilità sartoriale tra storytelling, design e produzione tecnica.</p>
+                                <div class="collaboratore-tags">
+                                    <span>Concept</span>
+                                    <span>Experience Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5">
+                            <div class="collaboratore-card text-center h-100">
+                                <div class="collaboratore-avatar">LM</div>
+                                <h3>Ludovica Moretti</h3>
+                                <p class="collaboratore-role">Lighting Designer</p>
+                                <p>Firma architetture luminose dinamiche calibrate su location storiche, corporate e outdoor.</p>
+                                <div class="collaboratore-tags">
+                                    <span>Lighting</span>
+                                    <span>Render</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-5">
+                            <div class="collaboratore-card text-center h-100">
+                                <div class="collaboratore-avatar">AV</div>
+                                <h3>Alessandro Vitale</h3>
+                                <p class="collaboratore-role">Sound Engineer</p>
+                                <p>Progetta diffusioni personalizzate garantendo equilibrio acustico e intelligibilità.</p>
+                                <div class="collaboratore-tags">
+                                    <span>Acustica</span>
+                                    <span>Live Mix</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5">
+                            <div class="collaboratore-card text-center h-100">
+                                <div class="collaboratore-avatar">SR</div>
+                                <h3>Sara Ricci</h3>
+                                <p class="collaboratore-role">Hospitality Manager</p>
+                                <p>Coordina logistica, accoglienza e guest experience con attenzione sartoriale al dettaglio.</p>
+                                <div class="collaboratore-tags">
+                                    <span>Guest Care</span>
+                                    <span>Protocollo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="collaboratore-card text-center">
-                <div class="collaboratore-avatar">LM</div>
-                <h3>Ludovica Moretti</h3>
-                <p class="collaboratore-role">Lighting Designer</p>
-                <p>Firma architetture luminose dinamiche calibrate su location storiche, corporate e outdoor.</p>
-                <div class="collaboratore-tags">
-                    <span>Lighting</span>
-                    <span>Render</span>
-                </div>
-            </div>
-            <div class="collaboratore-card text-center">
-                <div class="collaboratore-avatar">AV</div>
-                <h3>Alessandro Vitale</h3>
-                <p class="collaboratore-role">Sound Engineer</p>
-                <p>Progetta diffusioni personalizzate garantendo equilibrio acustico e intelligibilità.</p>
-                <div class="collaboratore-tags">
-                    <span>Acustica</span>
-                    <span>Live Mix</span>
-                </div>
-            </div>
-            <div class="collaboratore-card text-center">
-                <div class="collaboratore-avatar">SR</div>
-                <h3>Sara Ricci</h3>
-                <p class="collaboratore-role">Hospitality Manager</p>
-                <p>Coordina logistica, accoglienza e guest experience con attenzione sartoriale al dettaglio.</p>
-                <div class="collaboratore-tags">
-                    <span>Guest Care</span>
-                    <span>Protocollo</span>
-                </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#collaboratoriCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Precedente</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#collaboratoriCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Successivo</span>
+            </button>
         </div>
     </section>
 
@@ -214,7 +278,7 @@
             <h2 class="section-title">Album Eventi</h2>
             <p class="section-subtitle">Scene selezionate dalle nostre produzioni più evocative</p>
         </div>
-        <div id="albumCarousel" class="carousel slide album-carousel" data-bs-ride="carousel">
+        <div id="albumCarousel" class="carousel slide album-carousel section-carousel" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#albumCarousel" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -222,70 +286,98 @@
                 <button type="button" data-bs-target="#albumCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 <button type="button" data-bs-target="#albumCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 <button type="button" data-bs-target="#albumCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                <button type="button" data-bs-target="#albumCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
-                <button type="button" data-bs-target="#albumCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="album-slide">
-                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&amp;w=1600" alt="Notte di Luce">
-                        <div class="album-overlay">
-                            <h3>Notte di Luce</h3>
-                            <p>Mise en lumière architetturale tra dinamiche cromatiche e mapping.</p>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&amp;w=1600" alt="Notte di Luce">
+                                <div class="album-overlay">
+                                    <h3>Notte di Luce</h3>
+                                    <p>Mise en lumière architetturale tra dinamiche cromatiche e mapping.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&amp;w=1600" alt="Corporate Pulse">
+                                <div class="album-overlay">
+                                    <h3>Corporate Pulse</h3>
+                                    <p>Audio immersivo e led wall sincronizzati in multi-traccia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?q=80&amp;w=1600" alt="Garden Symphony">
+                                <div class="album-overlay">
+                                    <h3>Garden Symphony</h3>
+                                    <p>Installazione sonora diffusa con percorsi esperienziali.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="album-slide">
-                        <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&amp;w=1600" alt="Corporate Pulse">
-                        <div class="album-overlay">
-                            <h3>Corporate Pulse</h3>
-                            <p>Audio immersivo e led wall sincronizzati in multi-traccia.</p>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="https://images.unsplash.com/photo-1511576661531-b34d7da74305?q=80&amp;w=1600" alt="Iconic Nights">
+                                <div class="album-overlay">
+                                    <h3>Iconic Nights</h3>
+                                    <p>Dj set, visual art e luci dinamiche per club esclusivi.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="static/CSS/IMG/studio_foto.jpg" alt="Inaugurazione Studio Fotografico">
+                                <div class="album-overlay">
+                                    <h3>Inaugurazione Studio Fotografico</h3>
+                                    <p>Prisma Foto, Bitritto • 200 ospiti • Settembre 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="static/CSS/IMG/sarabanda.jpg" alt="Sarabanda">
+                                <div class="album-overlay">
+                                    <h3>Sarabanda</h3>
+                                    <p>Le New Buffet Piazza Umberto, Bitritto • 500 ospiti • Agosto 2025</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="album-slide">
-                        <img src="https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?q=80&amp;w=1600" alt="Garden Symphony">
-                        <div class="album-overlay">
-                            <h3>Garden Symphony</h3>
-                            <p>Installazione sonora diffusa con percorsi esperienziali.</p>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="static/CSS/IMG/luna_park.jpg" alt="Luna Park">
+                                <div class="album-overlay">
+                                    <h3>Luna Park</h3>
+                                    <p>Zona Viva Quasano, Bari • 300 ospiti • Luglio 2025</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="album-slide">
-                        <img src="https://images.unsplash.com/photo-1511576661531-b34d7da74305?q=80&amp;w=1600" alt="Iconic Nights">
-                        <div class="album-overlay">
-                            <h3>Iconic Nights</h3>
-                            <p>Dj set, visual art e luci dinamiche per club esclusivi.</p>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&amp;w=1600" alt="Immersive Experience">
+                                <div class="album-overlay">
+                                    <h3>Immersive Experience</h3>
+                                    <p>Performance live con interazione audio-luce e visual dinamici.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="album-slide">
-                        <img src="static/CSS/IMG/studio_foto.jpg" alt="Inaugurazione Studio Fotografico">
-                        <div class="album-overlay">
-                            <h3>Inaugurazione Studio Fotografico</h3>
-                            <p>Prisma Foto, Bitritto • 200 ospiti • Settembre 2025</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="album-slide">
-                        <img src="static/CSS/IMG/sarabanda.jpg" alt="Sarabanda">
-                        <div class="album-overlay">
-                            <h3>Sarabanda</h3>
-                            <p>Le New Buffet Piazza Umberto, Bitritto • 500 ospiti • Agosto 2025</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="album-slide">
-                        <img src="static/CSS/IMG/luna_park.jpg" alt="Luna Park">
-                        <div class="album-overlay">
-                            <h3>Luna Park</h3>
-                            <p>Zona Viva Quasano, Bari • 300 ospiti • Luglio 2025</p>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="album-item">
+                                <img src="https://images.unsplash.com/photo-1455735459330-969b65c65b1c?q=80&amp;w=1600" alt="Outdoor Gala">
+                                <div class="album-overlay">
+                                    <h3>Outdoor Gala</h3>
+                                    <p>Allestimento tailor-made con lighting immersivo e scenografie.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -337,7 +429,7 @@
 
     <!-- Contact Section -->
     <section id="contatti">
-        <h2 class="section-title">Contattaci</h2>
+        <h2 class="section-title text-center">Contattaci</h2>
         <p class="section-subtitle">Iniziamo insieme a progettare il tuo evento perfetto</p>
         <div class="contact-container">
             <div class="contact-info">
@@ -402,6 +494,7 @@
         <p style="color: #666; margin-top: 1rem;">Organizziamo emozioni dal 2024</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="static/JS/script.js"></script>
 </body>
 
