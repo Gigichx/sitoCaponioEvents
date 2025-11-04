@@ -271,6 +271,8 @@ section {
     position: relative;
     display: block;
     width: 100%;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 .section-title::after {
@@ -290,6 +292,15 @@ section {
     font-size: 1.2rem;
     color: var(--light-gray);
     margin-bottom: 4rem;
+    font-weight: 400;
+}
+
+section h3 {
+    font-weight: 600;
+}
+
+section h3 strong {
+    font-weight: inherit;
 }
 
 /* About Section */
@@ -348,21 +359,53 @@ section {
     background: var(--dark-gray);
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
+.servizio-row {
+    margin-top: 0;
 }
 
-.service-card {
-    background: var(--medium-gray);
-    padding: 2.5rem;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+.servizio-card {
+    background: rgba(15, 15, 15, 0.9);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 200px;
+    transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+}
+
+.servizio-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.18), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.servizio-card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.servizio-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(230, 57, 70, 0.4);
+    box-shadow: 0 25px 40px rgba(230, 57, 70, 0.18);
+}
+
+.servizio-card:hover::after {
+    opacity: 1;
 }
 
 #strumentazione {
