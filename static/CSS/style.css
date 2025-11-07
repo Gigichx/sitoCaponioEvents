@@ -28,26 +28,39 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(20, 20, 20, 0.95));
-    backdrop-filter: blur(15px);
+    background: rgba(8, 8, 8, 0.75);
+    backdrop-filter: blur(18px) saturate(140%);
     z-index: 1000;
-    padding: 1.2rem 5%;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(230, 57, 70, 0.2);
+    padding: 0.85rem 4%;
+    transition: all 0.35s ease;
+    border-bottom: 1px solid rgba(230, 57, 70, 0.18);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(230, 57, 70, 0.18) 0%, transparent 55%);
+    opacity: 0.35;
+    pointer-events: none;
 }
 
 nav.scrolled {
-    padding: 0.6rem 5%;
-    box-shadow: 0 8px 40px rgba(230, 57, 70, 0.25);
-    border-bottom: 2px solid rgba(230, 57, 70, 0.3);
+    padding: 0.65rem 4%;
+    background: rgba(8, 8, 8, 0.92);
+    border-bottom: 1px solid rgba(230, 57, 70, 0.25);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
 .logo {
@@ -70,8 +83,8 @@ nav.scrolled {
 }
 
 .logo-img {
-    width: 5vw;
-    height: 5vw;
+    width: clamp(46px, 4vw, 64px);
+    height: clamp(46px, 4vw, 64px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,6 +94,7 @@ nav.scrolled {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    filter: drop-shadow(0 6px 18px rgba(230, 57, 70, 0.4));
 }
 
 @keyframes rotate {
@@ -96,38 +110,47 @@ nav.scrolled {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2.5rem;
+    gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
     color: var(--white);
     text-decoration: none;
     font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
     transition: all 0.3s ease;
     position: relative;
-    padding: 8px 12px;
-    border-radius: 8px;
-    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
 }
 
 .nav-links a::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(230, 57, 70, 0.4), transparent);
-    border-radius: 8px;
+    background: linear-gradient(120deg, rgba(230, 57, 70, 0.35), transparent);
+    border-radius: inherit;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: scale(0.9);
 }
 
 .nav-links a:hover {
     color: var(--primary-red);
-    background: rgba(230, 57, 70, 0.1);
+    background: rgba(230, 57, 70, 0.08);
     text-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
 }
 
 .nav-links a:hover::before {
     opacity: 1;
+    transform: scale(1.02);
 }
 
 .menu-toggle {
@@ -152,31 +175,38 @@ nav.scrolled {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+    background: var(--black);
 }
 
 .hero::before {
     content: '';
     position: absolute;
-    width: 600px;
-    height: 600px;
-    border: 50px solid var(--primary-red);
-    border-radius: 50%;
-    opacity: 0.05;
-    animation: pulse 4s ease-in-out infinite;
-    border-left-color: transparent;
-    border-top-color: transparent;
+    inset: 0;
+    background-image: url('https://unsplash.com/it/foto/persone-che-alzano-il-bicchiere-di-vino-nella-fotografia-a-fuoco-selettiva-ULHxWq8reao');
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.1) brightness(0.55);
+    transform: scale(1.05);
+    animation: heroDrift 18s ease-in-out infinite alternate;
+    z-index: 0;
 }
 
-@keyframes pulse {
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.92) 0%, rgba(0, 0, 0, 0.65) 60%, rgba(230, 57, 70, 0.35) 100%), radial-gradient(circle at top right, rgba(230, 57, 70, 0.45), transparent 55%);
+    opacity: 0.85;
+    z-index: 1;
+}
 
-    0%,
-    100% {
-        transform: scale(1) rotate(0deg);
+@keyframes heroDrift {
+    0% {
+        transform: scale(1.05) translateY(-2%);
     }
 
-    50% {
-        transform: scale(1.2) rotate(180deg);
+    100% {
+        transform: scale(1.09) translateY(2%);
     }
 }
 
@@ -311,6 +341,10 @@ section h3 strong {
     align-items: center;
 }
 
+.about-text {
+    text-align: center;
+}
+
 .about-text h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -322,6 +356,7 @@ section h3 strong {
     line-height: 1.8;
     margin-bottom: 1.5rem;
     color: var(--light-gray);
+    text-align: center;
 }
 
 .about-image {
@@ -439,6 +474,11 @@ section h3 strong {
     position: relative;
     line-height: 1.4;
     padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 3.5rem;
 }
 
 .servizio-card:hover {
@@ -451,6 +491,21 @@ section h3 strong {
 .servizio-card:hover h3 {
     color: var(--primary-red);
     text-shadow: 0 0 20px rgba(230, 57, 70, 0.4);
+}
+
+.strumentazione-card,
+.collaboratore-card,
+.descrizione-card {
+    text-align: center;
+}
+
+.strumentazione-card h3,
+.strumentazione-card p,
+.collaboratore-card h3,
+.collaboratore-card p,
+.descrizione-card h3,
+.descrizione-card p {
+    text-align: center;
 }
 
 #strumentazione {
@@ -1028,8 +1083,10 @@ section h3 strong {
 
 .contact-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    text-align: center;
+    gap: 1rem;
     margin-bottom: 2rem;
     padding: 1.5rem;
     background: var(--medium-gray);
@@ -1038,8 +1095,12 @@ section h3 strong {
 }
 
 .contact-item:hover {
-    transform: translateX(10px);
+    transform: translateY(-8px);
     background: var(--black);
+}
+
+.contact-item div {
+    text-align: center;
 }
 
 .contact-icon {
