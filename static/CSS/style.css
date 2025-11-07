@@ -144,7 +144,7 @@ nav.scrolled {
 
 .nav-links a:hover {
     color: var(--primary-red);
-    background: rgba(230, 57, 70, 0.08);
+    background: rgba(19, 14, 14, 0.08);
     text-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
 }
 
