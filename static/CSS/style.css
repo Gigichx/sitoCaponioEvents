@@ -176,15 +176,16 @@ nav.scrolled {
     position: relative;
     overflow: hidden;
     background: var(--black);
+    background-image: url('https://files.fm/thumb_show.php?i=egabn3wjdc');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('https://unsplash.com/it/foto/persone-che-alzano-il-bicchiere-di-vino-nella-fotografia-a-fuoco-selettiva-ULHxWq8reao');
-    background-size: cover;
-    background-position: center;
     filter: saturate(1.1) brightness(0.55);
     transform: scale(1.05);
     animation: heroDrift 18s ease-in-out infinite alternate;
@@ -532,10 +533,35 @@ section h3 strong {
 
 .section-carousel .carousel-control-prev-icon,
 .section-carousel .carousel-control-next-icon {
-    filter: invert(1) drop-shadow(0 0 8px rgba(230, 57, 70, 0.6));
+    background-color: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
     width: 50px;
     height: 50px;
-    background-size: 100%;
+    background-size: 60%;
+    border-radius: 50%;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 8px rgba(230, 57, 70, 0.6));
+    background-image: none;
+    position: relative;
+    border: 2px solid var(--primary-red);
+}
+
+.section-carousel .carousel-control-prev-icon::before,
+.section-carousel .carousel-control-next-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    border: 3px solid var(--primary-red);
+    border-top: none;
+    border-right: none;
+}
+
+.section-carousel .carousel-control-next-icon::before {
+    transform: translate(-50%, -50%) rotate(-135deg);
 }
 
 .section-carousel .carousel-control-prev,
@@ -554,7 +580,16 @@ section h3 strong {
 
 .section-carousel .carousel-control-prev-icon:hover,
 .section-carousel .carousel-control-next-icon:hover {
-    filter: invert(1) drop-shadow(0 0 15px rgba(230, 57, 70, 0.9));
+    background-color: rgba(230, 57, 70, 0.2);
+    border-color: var(--light-red);
+    opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(230, 57, 70, 0.9));
+    transform: scale(1.1);
+}
+
+.section-carousel .carousel-control-prev-icon:hover::before,
+.section-carousel .carousel-control-next-icon:hover::before {
+    border-color: var(--light-red);
 }
 
 /* Uniformed carousel indicators for all carousels */
@@ -728,6 +763,15 @@ section h3 strong {
     letter-spacing: 2px;
     background: linear-gradient(135deg, rgba(230, 57, 70, 0.8), rgba(230, 57, 70, 0.4));
     font-size: 1.2rem;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.collaboratore-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .collaboratore-role {
@@ -749,6 +793,34 @@ section h3 strong {
     padding: 0.35rem 0.9rem;
     font-size: 0.8rem;
     letter-spacing: 0.4px;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.collaboratore-tags span a {
+    color: var(--white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.collaboratore-tags span a:hover {
+    color: var(--primary-red);
+    transform: scale(1.1);
+}
+
+.collaboratore-tags span a i {
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.collaboratore-tags span:hover {
+    background: rgba(230, 57, 70, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
 }
 
 #album {
@@ -1160,10 +1232,48 @@ section h3 strong {
     transition: all 0.3s ease;
 }
 
-.submit-button:hover {
+.submit-button:hover:not(:disabled) {
     background: transparent;
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
+}
+
+.submit-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.form-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: var(--white);
+    font-weight: 500;
+    z-index: 10000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideInRight 0.3s ease;
+}
+
+.form-notification-success {
+    background: var(--primary-red);
+}
+
+.form-notification-error {
+    background: #dc3545;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* Footer */

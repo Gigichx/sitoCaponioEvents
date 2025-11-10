@@ -37,11 +37,97 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission
-document.querySelector('form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Grazie per averci contattato! Ti risponderemo al più presto.');
-});
+// Form submission with Formspree
+const contactForm = document.querySelector('form');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitButton = contactForm.querySelector('.submit-button');
+        const originalText = submitButton.textContent;
+        
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Invio in corso...';
+        submitButton.style.opacity = '0.7';
+        submitButton.style.cursor = 'not-allowed';
+        
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Show success message
+                submitButton.textContent = 'Messaggio inviato! ✓';
+                submitButton.style.background = '#28a745';
+                submitButton.style.borderColor = '#28a745';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitButton.textContent = originalText;
+                    submitButton.style.background = '';
+                    submitButton.style.borderColor = '';
+                    submitButton.disabled = false;
+                    submitButton.style.opacity = '1';
+                    submitButton.style.cursor = 'pointer';
+                }, 3000);
+                
+                // Show success notification
+                showNotification('Grazie per averci contattato! Ti risponderemo al più presto.', 'success');
+            } else {
+                throw new Error('Errore nell\'invio del messaggio');
+            }
+        } catch (error) {
+            // Show error message
+            submitButton.textContent = 'Errore - Riprova';
+            submitButton.style.background = '#dc3545';
+            submitButton.style.borderColor = '#dc3545';
+            
+            setTimeout(() => {
+                submitButton.textContent = originalText;
+                submitButton.style.background = '';
+                submitButton.style.borderColor = '';
+                submitButton.disabled = false;
+                submitButton.style.opacity = '1';
+                submitButton.style.cursor = 'pointer';
+            }, 3000);
+            
+            showNotification('Si è verificato un errore. Per favore, riprova più tardi.', 'error');
+        }
+    });
+}
+
+// Notification function
+function showNotification(message, type) {
+    // Remove existing notification if any
+    const existingNotification = document.querySelector('.form-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    const notification = document.createElement('div');
+    notification.className = `form-notification form-notification-${type}`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Remove after 5 seconds with fade out
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100px)';
+        notification.style.transition = 'all 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
 
 // Intersection Observer for animations
 const observerOptions = {
