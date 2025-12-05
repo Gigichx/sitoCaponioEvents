@@ -314,3 +314,68 @@ document.querySelectorAll('.portfolio-item').forEach(item => {
         this.classList.toggle('active');
     });
 });
+
+// ============================================
+// EVENTI IN PROGRAMMA - MODAL FUNCTIONALITY
+// Aggiungi questo codice alla fine del tuo file script.js
+// ============================================
+
+const eventoModal = document.getElementById('eventoModal');
+const eventoItems = document.querySelectorAll('.evento-item');
+const modalClose = document.querySelector('.evento-modal-close');
+const modalPosterContainer = document.querySelector('.evento-modal-poster');
+
+// Apri modal quando si clicca su un evento
+eventoItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Trova l'immagine o il placeholder nell'evento cliccato
+        const posterImg = this.querySelector('.evento-poster img');
+        const posterPlaceholder = this.querySelector('.placeholder-poster');
+        
+        // Pulisci il contenuto del modal
+        modalPosterContainer.innerHTML = '';
+        
+        if (posterImg) {
+            // Se c'è un'immagine reale, clonala e mostrala nel modal
+            const modalImg = document.createElement('img');
+            modalImg.src = posterImg.src;
+            modalImg.alt = posterImg.alt;
+            modalPosterContainer.appendChild(modalImg);
+        } else if (posterPlaceholder) {
+            // Se c'è solo il placeholder, clonalo
+            const clonedPlaceholder = posterPlaceholder.cloneNode(true);
+            clonedPlaceholder.classList.remove('placeholder-poster');
+            clonedPlaceholder.classList.add('placeholder-poster-large');
+            modalPosterContainer.appendChild(clonedPlaceholder);
+        }
+        
+        // Mostra il modal
+        eventoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Chiudi modal cliccando sulla X
+if (modalClose) {
+    modalClose.addEventListener('click', function(e) {
+        e.stopPropagation();
+        eventoModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+}
+
+// Chiudi modal cliccando fuori dall'immagine
+eventoModal.addEventListener('click', function(e) {
+    if (e.target === eventoModal) {
+        eventoModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Chiudi modal con tasto ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && eventoModal.classList.contains('active')) {
+        eventoModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
