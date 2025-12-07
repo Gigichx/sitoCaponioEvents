@@ -92,113 +92,144 @@
         <h2 class="section-title">I Nostri Servizi</h2>
         <p class="section-subtitle">Soluzioni complete per ogni tipo di evento</p>
 
-        <div class="servizi-lista">
-            <!-- Servizio 1 -->
-            <div class="servizio-item">
-                <div class="servizio-content">
-                    <div class="servizio-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                    <h3>ORGANIZZAZIONE E PIANIFICAZIONE EVENTI</h3>
-                    <ul>
-                        <li>Consulenza personalizzata</li>
-                        <li>Coordinamento completo</li>
-                        <li>Timeline e budget management</li>
-                        <li>Selezione location</li>
-                    </ul>
+        <div id="serviziCarousel" class="carousel slide servizi-carousel" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#serviziCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#serviziCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#serviziCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#serviziCarousel" data-bs-slide-to="3"></button>
+                <button type="button" data-bs-target="#serviziCarousel" data-bs-slide-to="4"></button>
+                <button type="button" data-bs-target="#serviziCarousel" data-bs-slide-to="5"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="servizio-slide">
+                        <div class="servizio-image-container">
+                            <img src="https://via.placeholder.com/600x500/1a1a1a/E63946?text=Organizzazione"
+                                alt="Organizzazione">
+                        </div>
+                        <div class="servizio-details">
+                            <div class="servizio-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                            <h3>ORGANIZZAZIONE E PIANIFICAZIONE EVENTI</h3>
+                            <ul>
+                                <li>Consulenza personalizzata</li>
+                                <li>Coordinamento completo</li>
+                                <li>Timeline e budget management</li>
+                                <li>Selezione location</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="servizio-image">
-                    <img src="https://via.placeholder.com/500x400/1a1a1a/E63946?text=Organizzazione"
-                        alt="Organizzazione Eventi">
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="servizio-slide">
+                        <div class="servizio-image-container">
+                            <img src="https://via.placeholder.com/600x500/1a1a1a/E63946?text=Allestimenti"
+                                alt="Allestimenti">
+                        </div>
+                        <div class="servizio-details">
+                            <div class="servizio-icon"><i class="fa-solid fa-palette"></i></div>
+                            <h3>ALLESTIMENTI & DECORAZIONI</h3>
+                            <ul>
+                                <li>Design personalizzato</li>
+                                <li>Flower design</li>
+                                <li>Scenografie tematiche</li>
+                                <li>Arredamento su misura</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <div class="servizio-slide">
+                        <div class="servizio-image-container">
+                            <img src="https://via.placeholder.com/600x500/1a1a1a/E63946?text=Fotografia"
+                                alt="Fotografia">
+                        </div>
+                        <div class="servizio-details">
+                            <div class="servizio-icon"><i class="fa-solid fa-camera"></i></div>
+                            <h3>FOTOGRAFIA, VIDEOMAKER & DRONE</h3>
+                            <ul>
+                                <li>Servizio fotografico professionale</li>
+                                <li>Video emozionali</li>
+                                <li>Riprese aeree con drone</li>
+                                <li>Editing e post-produzione</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-item">
+                    <div class="servizio-slide">
+                        <div class="servizio-image-container">
+                            <img src="https://via.placeholder.com/600x500/1a1a1a/E63946?text=Intrattenimento"
+                                alt="Intrattenimento">
+                        </div>
+                        <div class="servizio-details">
+                            <div class="servizio-icon"><i class="fa-solid fa-masks-theater"></i></div>
+                            <h3>INTRATTENIMENTO & SPETTACOLO</h3>
+                            <ul>
+                                <li>Artisti e performers</li>
+                                <li>Spettacoli dal vivo</li>
+                                <li>Animazione per bambini</li>
+                                <li>Caricaturisti e maghi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="carousel-item">
+                    <div class="servizio-slide">
+                        <div class="servizio-image-container">
+                            <img src="https://via.placeholder.com/600x500/1a1a1a/E63946?text=Musica" alt="Musica">
+                        </div>
+                        <div class="servizio-details">
+                            <div class="servizio-icon"><i class="fa-solid fa-music"></i></div>
+                            <h3>INTRATTENIMENTO MUSICALE</h3>
+                            <ul>
+                                <li>DJ Set professionali</li>
+                                <li>Live band e musicisti</li>
+                                <li>Karaoke</li>
+                                <li>Playlist personalizzate</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="carousel-item">
+                    <div class="servizio-slide">
+                        <div class="servizio-image-container">
+                            <img src="https://via.placeholder.com/600x500/1a1a1a/E63946?text=Audio+Luci" alt="Service">
+                        </div>
+                        <div class="servizio-details">
+                            <div class="servizio-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                            <h3>SERVICE AUDIO E LUCI</h3>
+                            <ul>
+                                <li>Impianti audio professionali</li>
+                                <li>Luci scenografiche</li>
+                                <li>Effetti speciali</li>
+                                <li>Regia tecnica</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Servizio 2 -->
-            <div class="servizio-item reverse">
-                <div class="servizio-image">
-                    <img src="https://via.placeholder.com/500x400/1a1a1a/E63946?text=Allestimenti" alt="Allestimenti">
-                </div>
-                <div class="servizio-content">
-                    <div class="servizio-icon"><i class="fa-solid fa-palette"></i></div>
-                    <h3>ALLESTIMENTI & DECORAZIONI</h3>
-                    <ul>
-                        <li>Design personalizzato</li>
-                        <li>Flower design</li>
-                        <li>Scenografie tematiche</li>
-                        <li>Arredamento su misura</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Servizio 3 -->
-            <div class="servizio-item">
-                <div class="servizio-content">
-                    <div class="servizio-icon"><i class="fa-solid fa-camera"></i></div>
-                    <h3>FOTOGRAFIA, VIDEOMAKER & DRONE</h3>
-                    <ul>
-                        <li>Servizio fotografico professionale</li>
-                        <li>Video emozionali</li>
-                        <li>Riprese aeree con drone</li>
-                        <li>Editing e post-produzione</li>
-                    </ul>
-                </div>
-                <div class="servizio-image">
-                    <img src="https://via.placeholder.com/500x400/1a1a1a/E63946?text=Fotografia"
-                        alt="Fotografia e Video">
-                </div>
-            </div>
-
-            <!-- Servizio 4 -->
-            <div class="servizio-item reverse">
-                <div class="servizio-image">
-                    <img src="https://via.placeholder.com/500x400/1a1a1a/E63946?text=Intrattenimento"
-                        alt="Intrattenimento">
-                </div>
-                <div class="servizio-content">
-                    <div class="servizio-icon"><i class="fa-solid fa-music"></i></div>
-                    <h3>INTRATTENIMENTO MUSICALE</h3>
-                    <ul>
-                        <li>DJ Set professionali</li>
-                        <li>Live band e musicisti</li>
-                        <li>Karaoke e animazione</li>
-                        <li>Playlist personalizzate</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Servizio 5 -->
-            <div class="servizio-item">
-                <div class="servizio-content">
-                    <div class="servizio-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                    <h3>SERVICE AUDIO E LUCI</h3>
-                    <ul>
-                        <li>Impianti audio professionali</li>
-                        <li>Luci scenografiche</li>
-                        <li>Effetti speciali</li>
-                        <li>Regia tecnica</li>
-                    </ul>
-                </div>
-                <div class="servizio-image">
-                    <img src="https://via.placeholder.com/500x400/1a1a1a/E63946?text=Audio+Luci"
-                        alt="Service Audio Luci">
-                </div>
-            </div>
-
-            <!-- Servizio 6 -->
-            <div class="servizio-item reverse">
-                <div class="servizio-image">
-                    <img src="https://via.placeholder.com/500x400/1a1a1a/E63946?text=Eventi+Speciali"
-                        alt="Eventi Speciali">
-                </div>
-                <div class="servizio-content">
-                    <div class="servizio-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-                    <h3>EVENTI SPECIALI</h3>
-                    <ul>
-                        <li>Matrimoni e cerimonie</li>
-                        <li>Compleanni e feste private</li>
-                        <li>Eventi aziendali</li>
-                        <li>Concerti e spettacoli</li>
-                    </ul>
-                </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#serviziCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#serviziCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </section>
 
@@ -298,47 +329,67 @@
 
     <!-- About Section -->
     <section id="chi-siamo">
-        <h2 class="section-title">La nostra storia</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Caponio Events nasce da una passione autentica per l'organizzazione di eventi. Nel tempo, abbiamo
-                    costruito un percorso solido che ci permette di trasformare le visioni dei clienti in progetti
-                    curati ed esclusivi.</p>
+        <h2 class="section-title">Chi Siamo</h2>
 
-                <p>Il nostro team di artisti e professionisti assicura qualità e coerenza in ogni dettaglio, rendendo
-                    ogni evento un'esperienza unica. Lavoriamo con precisione, stile e professionalità per valorizzare
-                    l'identità di ogni progetto.</p>
-
-                <p>Un anno fa prendeva vita questo progetto, che seguo come direttore artistico e organizzatore di
-                    eventi. È un percorso che ho costruito dalle fondamenta, con impegno, passione e tanti sacrifici
-                    personali. Un cammino che continua a regalarmi emozioni immense e soddisfazioni sempre nuove.</p>
-
-                <p>Nel corso del tempo ho avuto la fortuna di collaborare con artisti e professionisti che hanno
-                    condiviso visione, energia e competenza. Ognuno di loro ha contribuito a rendere speciale ogni
-                    esperienza, trasformando ogni evento in qualcosa di unico.</p>
-
-                <p>Ogni momento è il risultato di cura, attenzione ai dettagli e desiderio autentico di creare
-                    situazioni vere e memorabili. Il progetto cresce continuamente, proprio come una melodia che prende
-                    forma nota dopo nota, aprendosi al futuro con entusiasmo, nuove sfide, collaborazioni e possibilità.
-                </p>
-
-                <p>È un percorso fatto di incontri, scambi e crescita reciproca. Ogni traguardo raggiunto non è soltanto
-                    un risultato, ma anche la conferma del desiderio di condividere emozioni con chi sceglie di far
-                    parte di questo viaggio.</p>
-
-                <p>E se questo primo anno mi ha insegnato qualcosa, è che il cammino è appena iniziato: il meglio deve
-                    ancora arrivare.</p>
-
-                <p class="about-quote">"Grazie di cuore a tutte le persone che mi hanno scelto nei vari eventi, e un
-                    ringraziamento speciale agli artisti e ai collaboratori che hanno reso possibile questo percorso. La
-                    vostra fiducia e il vostro impegno lo rendono ancora più straordinario."</p>
-
-                <p class="about-signature">Giuseppe Caponio</p>
-            </div>
-            <div class="about-image">
-                <div class="placeholder-image">
-                    <img src="https://files.fm/thumb_show.php?i=9xqefx487u" alt="">
+        <div class="chi-siamo-container">
+            <!-- Blocco 1 -->
+            <div class="chi-siamo-block">
+                <div class="chi-siamo-text">
+                    <h3>La nostra storia</h3>
+                    <p>Caponio Events nasce da una passione autentica per l'organizzazione di eventi. Nel tempo, abbiamo
+                        costruito un percorso solido che ci permette di trasformare le visioni dei clienti in progetti
+                        curati ed esclusivi.</p>
+                    <p>Il nostro team di artisti e professionisti assicura qualità e coerenza in ogni dettaglio,
+                        rendendo ogni evento un'esperienza unica. Lavoriamo con precisione, stile e professionalità per
+                        valorizzare l'identità di ogni progetto.</p>
                 </div>
+                <div class="chi-siamo-image">
+                    <img src="https://files.fm/thumb_show.php?i=p9vzp2wsas" alt="Storia">
+                </div>
+            </div>
+
+            <!-- Blocco 2 - Reverse -->
+            <div class="chi-siamo-block reverse">
+                <div class="chi-siamo-image">
+                    <img src="https://files.fm/thumb_show.php?i=9xqefx487u" alt="Progetto">
+                </div>
+                <div class="chi-siamo-text">
+                    <p>Un anno fa prendeva vita questo progetto, che seguo come direttore artistico e organizzatore di
+                        eventi. È un percorso che ho costruito dalle fondamenta, con impegno, passione e tanti sacrifici
+                        personali. Un cammino che continua a regalarmi emozioni immense e soddisfazioni sempre nuove.
+                    </p>
+                    <p>Nel corso del tempo ho avuto la fortuna di collaborare con artisti e professionisti che hanno
+                        condiviso visione, energia e competenza. Ognuno di loro ha contribuito a rendere speciale ogni
+                        esperienza, trasformando ogni evento in qualcosa di unico.</p>
+                </div>
+            </div>
+
+            <!-- Blocco 3 -->
+            <div class="chi-siamo-block">
+                <div class="chi-siamo-text">
+                    <p>Ogni momento è il risultato di cura, attenzione ai dettagli e desiderio autentico di creare
+                        situazioni vere e memorabili. Il progetto cresce continuamente, proprio come una melodia che
+                        prende forma nota dopo nota, aprendosi al futuro con entusiasmo, nuove sfide, collaborazioni e
+                        possibilità.</p>
+                    <p>È un percorso fatto di incontri, scambi e crescita reciproca. Ogni traguardo raggiunto non è
+                        soltanto un risultato, ma anche la conferma del desiderio di condividere emozioni con chi
+                        sceglie di far parte di questo viaggio.</p>
+                </div>
+                <div class="chi-siamo-image">
+                    <img src="https://files.fm/thumb_show.php?i=he9hdbx7rw" alt="Percorso">
+                </div>
+            </div>
+
+            <!-- Citazione finale -->
+            <div class="chi-siamo-quote">
+                <p>E se questo primo anno mi ha insegnato qualcosa, è che il cammino è appena iniziato: <strong>il
+                        meglio deve ancora arrivare.</strong></p>
+                <blockquote>
+                    "Grazie di cuore a tutte le persone che mi hanno scelto nei vari eventi, e un ringraziamento
+                    speciale agli artisti e ai collaboratori che hanno reso possibile questo percorso. La vostra fiducia
+                    e il vostro impegno lo rendono ancora più straordinario."
+                </blockquote>
+                <p class="chi-siamo-signature">— Giuseppe Caponio</p>
             </div>
         </div>
     </section>
