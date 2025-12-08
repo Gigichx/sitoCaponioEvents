@@ -1,0 +1,659 @@
+/* ============================================
+   ANIMATIONS.CSS - FILE ANIMAZIONI CAPONIO EVENTS
+   Crea questo file nella cartella: static/CSS/animations.css
+   Poi importalo nell'HTML: <link rel="stylesheet" href="static/CSS/animations.css">
+   ============================================ */
+
+/* ============================================
+   KEYFRAMES GLOBALI
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(230, 57, 70, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ============================================
+   NAVBAR ANIMATIONS
+   ============================================ */
+
+nav {
+    animation: slideDown 0.6s ease forwards;
+}
+
+/* ============================================
+   SECTION TITLE ANIMATIONS
+   ============================================ */
+
+.section-title {
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100px;
+    height: 4px;
+    background: var(--primary-red);
+    border-radius: 2px;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-title.visible::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* ============================================
+   SERVIZI SPLIT SCREEN ANIMATIONS
+   ============================================ */
+
+/* Fade in dei blocchi servizi */
+.servizio-split {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.servizio-split.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ritardi incrementali per effetto cascata */
+.servizio-split:nth-child(odd).visible {
+    transition-delay: 0.1s;
+}
+
+.servizio-split:nth-child(even).visible {
+    transition-delay: 0.2s;
+}
+
+/* Animazione immagini con parallax */
+.servizio-split-image {
+    overflow: hidden;
+}
+
+.servizio-split-image img {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* Overlay che si intensifica */
+.image-overlay {
+    transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.servizio-split:hover .image-overlay {
+    opacity: 1;
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.5), rgba(10, 10, 10, 0.7));
+}
+
+/* Animazione numero servizio */
+.servizio-numero {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.servizio-split.visible .servizio-numero {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+/* Animazione titolo servizio */
+.servizio-split-content h3 {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.servizio-split.visible .servizio-split-content h3 {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.4s;
+}
+
+/* Animazione sequenziale lista servizi */
+.servizio-lista li {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.servizio-split.visible .servizio-lista li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Ritardi incrementali per ogni elemento lista */
+.servizio-split.visible .servizio-lista li:nth-child(1) { transition-delay: 0.5s; }
+.servizio-split.visible .servizio-lista li:nth-child(2) { transition-delay: 0.6s; }
+.servizio-split.visible .servizio-lista li:nth-child(3) { transition-delay: 0.7s; }
+.servizio-split.visible .servizio-lista li:nth-child(4) { transition-delay: 0.8s; }
+.servizio-split.visible .servizio-lista li:nth-child(5) { transition-delay: 0.9s; }
+.servizio-split.visible .servizio-lista li:nth-child(6) { transition-delay: 1s; }
+
+/* Hover sugli item della lista */
+.servizio-lista li {
+    transition: all 0.3s ease;
+}
+
+.servizio-lista li:hover {
+    transform: translateX(10px);
+    color: var(--white);
+}
+
+.servizio-lista li i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.servizio-lista li:hover i {
+    transform: scale(1.2);
+    color: var(--light-red);
+}
+
+/* Pulsante CTA con pulse */
+.servizio-cta {
+    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+}
+
+.servizio-cta:hover {
+    animation: none;
+}
+
+.servizio-split.visible .servizio-cta {
+    animation-delay: 1.2s;
+}
+
+/* ============================================
+   SERVIZI GRIGLIA ANIMATIONS
+   ============================================ */
+
+.servizio-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.servizio-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Ritardi incrementali per ogni card */
+.servizio-card:nth-child(1).visible { transition-delay: 0.05s; }
+.servizio-card:nth-child(2).visible { transition-delay: 0.1s; }
+.servizio-card:nth-child(3).visible { transition-delay: 0.15s; }
+.servizio-card:nth-child(4).visible { transition-delay: 0.2s; }
+.servizio-card:nth-child(5).visible { transition-delay: 0.25s; }
+.servizio-card:nth-child(6).visible { transition-delay: 0.3s; }
+.servizio-card:nth-child(7).visible { transition-delay: 0.35s; }
+.servizio-card:nth-child(8).visible { transition-delay: 0.4s; }
+.servizio-card:nth-child(9).visible { transition-delay: 0.45s; }
+.servizio-card:nth-child(10).visible { transition-delay: 0.5s; }
+.servizio-card:nth-child(11).visible { transition-delay: 0.55s; }
+.servizio-card:nth-child(12).visible { transition-delay: 0.6s; }
+
+/* Hover effect con smooth transitions */
+.servizio-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.servizio-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* ============================================
+   COLLABORATORI ANIMATIONS
+   ============================================ */
+
+/* Animazione card collaboratore */
+.collaboratore-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardSlideIn 0.8s ease forwards;
+}
+
+/* Ritardo per la seconda card */
+.col-md-6:nth-child(2) .collaboratore-card {
+    animation-delay: 0.2s;
+}
+
+/* Avatar con effetto glow */
+.collaboratore-avatar {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.collaboratore-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary-red), transparent, var(--primary-red));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    animation: rotate 3s linear infinite;
+}
+
+.collaboratore-card:hover .collaboratore-avatar {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(230, 57, 70, 0.6),
+                0 0 60px rgba(230, 57, 70, 0.3);
+}
+
+.collaboratore-card:hover .collaboratore-avatar::before {
+    opacity: 1;
+}
+
+/* Animazione tags */
+.collaboratore-tags span {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collaboratore-tags span:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Transizioni carousel più morbide */
+#collaboratoriCarousel .carousel-item {
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+#collaboratoriCarousel .carousel-item-next,
+#collaboratoriCarousel .carousel-item-prev {
+    opacity: 0;
+}
+
+#collaboratoriCarousel .carousel-item.active {
+    opacity: 1;
+}
+
+/* Controlli carousel con animazione */
+#collaboratoriCarousel .carousel-control-prev,
+#collaboratoriCarousel .carousel-control-next {
+    transition: all 0.3s ease;
+}
+
+#collaboratoriCarousel .carousel-control-prev:hover,
+#collaboratoriCarousel .carousel-control-next:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ============================================
+   EVENTI IN PROGRAMMA ANIMATIONS
+   ============================================ */
+
+.evento-item {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.evento-item:nth-child(1) { animation-delay: 0.1s; }
+.evento-item:nth-child(2) { animation-delay: 0.2s; }
+.evento-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Hover con smooth transform */
+.evento-item {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evento-item:hover {
+    transform: translateY(-12px) scale(1.02);
+}
+
+/* Modal fade in */
+.evento-modal {
+    animation: fadeIn 0.3s ease;
+}
+
+.evento-modal-content {
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   CHI SIAMO ANIMATIONS
+   ============================================ */
+
+.chi-siamo-block {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.chi-siamo-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chi-siamo-block:nth-child(even).visible {
+    transition-delay: 0.2s;
+}
+
+/* Immagini con zoom smooth */
+.chi-siamo-image {
+    overflow: hidden;
+}
+
+.chi-siamo-image img {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chi-siamo-image:hover img {
+    transform: scale(1.08);
+}
+
+/* Quote con fade in */
+.chi-siamo-quote {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.chi-siamo-quote.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   CONTATTI ANIMATIONS
+   ============================================ */
+
+.contact-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.contact-item:nth-child(1) { animation-delay: 0.1s; }
+.contact-item:nth-child(2) { animation-delay: 0.2s; }
+.contact-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Form con focus effects */
+.form-group input,
+.form-group textarea {
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(230, 57, 70, 0.2);
+}
+
+/* Submit button con ripple */
+.submit-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button:hover:not(:disabled) {
+    animation: pulse 1.5s ease;
+}
+
+/* ============================================
+   CTA BUTTONS GLOBALI
+   ============================================ */
+
+.cta-button,
+.btn-primario-grande {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ripple effect on click */
+.cta-button::before,
+.btn-primario-grande::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:active::before,
+.btn-primario-grande:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* ============================================
+   OTTIMIZZAZIONE PERFORMANCE
+   ============================================ */
+
+/* Will-change per elementi animati */
+.servizio-split,
+.servizio-card,
+.collaboratore-card,
+.evento-item,
+.chi-siamo-block {
+    will-change: transform, opacity;
+}
+
+/* Dopo l'animazione, rimuovi will-change (fatto via JS) */
+.animation-complete {
+    will-change: auto;
+}
+
+/* ============================================
+   RESPONSIVE - DISABILITA ANIMAZIONI PESANTI SU MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Disabilita parallax su mobile */
+    .servizio-split-image img {
+        transform: none !important;
+    }
+    
+    /* Animazioni più veloci su mobile */
+    * {
+        animation-duration: 0.4s !important;
+        transition-duration: 0.3s !important;
+    }
+    
+    /* Disabilita pulse su mobile per risparmiare batteria */
+    .servizio-cta,
+    .cta-button {
+        animation: none !important;
+    }
+    
+    /* Disabilita rotate animation su mobile */
+    .collaboratore-avatar::before {
+        animation: none !important;
+    }
+}
+
+/* Disabilita tutte le animazioni per utenti che preferiscono reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+/* Skeleton loading per immagini */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-skeleton {
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   SCROLL REVEAL UTILITIES
+   ============================================ */
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}

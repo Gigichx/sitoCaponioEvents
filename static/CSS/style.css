@@ -1,4 +1,10 @@
 /* ============================================
+   ANIMAZIONI
+   ============================================ */
+
+/*@import "animation.css";*/
+
+/* ============================================
    RESET E VARIABILI GLOBALI
    ============================================ */
 
@@ -799,7 +805,7 @@ section h3 strong {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin-top: 0rem;
+    margin-top: 0.5rem;
 }
 
 .stack-control {
@@ -902,9 +908,16 @@ section h3 strong {
    RESPONSIVE
    ============================================ */
 
+/* ============================================
+   SERVIZI STACK - FIX MOBILE
+   ============================================ */
+
+/* Assicura che i controlli siano sempre visibili su mobile */
 @media (max-width: 968px) {
     .servizi-stack {
         height: 700px;
+        touch-action: pan-y pinch-zoom;
+        /* Abilita swipe */
     }
 
     .servizio-stack-card {
@@ -939,6 +952,56 @@ section h3 strong {
 
     .servizio-stack-card.behind-3 {
         transform: translateX(-50%) translateY(30px) scale(0.88);
+    }
+
+    /* IMPORTANTE: Rendi i controlli sempre visibili */
+    .servizi-stack-controls {
+        margin-top: 2rem;
+    }
+
+    .stack-control {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        opacity: 1 !important;
+        /* Forza visibilità */
+        display: flex !important;
+        /* Forza display */
+    }
+
+    .stack-indicators {
+        gap: 0.6rem;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    .indicator.active {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .servizi-stack-controls {
+        gap: 1rem;
+    }
+
+    .stack-control {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .servizi-cta-finale {
+        padding: 3rem 5%;
+        margin: 3rem 5% 0;
+    }
+
+    .servizi-stack-container {
+        padding: 0 1rem;
     }
 }
 
@@ -1115,7 +1178,11 @@ section h3 strong {
     box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
 }
 
-/* Controlli carousel migliorati */
+/* ============================================
+   COLLABORATORI - FIX RESPONSIVE FRECCE
+   ============================================ */
+
+/* Controlli carousel collaboratori */
 #collaboratoriCarousel .carousel-control-prev,
 #collaboratoriCarousel .carousel-control-next {
     width: 50px;
@@ -1143,45 +1210,44 @@ section h3 strong {
     transform: translateY(-50%) scale(1.1);
 }
 
-#collaboratoriCarousel .carousel-indicators {
-    bottom: -40px;
-}
-
-#collaboratoriCarousel .carousel-indicators button {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    margin: 0 6px;
-}
-
-#collaboratoriCarousel .carousel-indicators .active {
-    background: var(--primary-red);
-    width: 12px;
-    height: 12px;
-}
-
-/* Responsive collaboratori */
+/* MOBILE: Sposta le frecce sotto le card */
 @media (max-width: 768px) {
+    #collaboratoriCarousel {
+        padding-bottom: 80px;
+        /* Spazio per le frecce */
+    }
 
     #collaboratoriCarousel .carousel-control-prev,
     #collaboratoriCarousel .carousel-control-next {
-        width: 40px;
-        height: 40px;
+        top: auto;
+        bottom: 10px;
+        transform: none;
+        width: 45px;
+        height: 45px;
+        opacity: 1;
     }
 
     #collaboratoriCarousel .carousel-control-prev {
-        left: 10px;
+        left: calc(50% - 60px);
     }
 
     #collaboratoriCarousel .carousel-control-next {
-        right: 10px;
+        right: calc(50% - 60px);
+    }
+
+    #collaboratoriCarousel .carousel-control-prev:hover,
+    #collaboratoriCarousel .carousel-control-next:hover {
+        transform: scale(1.1);
+    }
+
+    #collaboratoriCarousel .carousel-indicators {
+        bottom: -50px;
     }
 
     .collaboratore-card {
         min-height: 400px;
         padding: 2rem 1.5rem;
+        margin-bottom: 20px;
     }
 
     .collaboratore-avatar {
@@ -1942,23 +2008,85 @@ footer {
     }
 
     /* Chi Siamo Mobile */
-    .chi-siamo-block,
-    .chi-siamo-block.reverse {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        direction: ltr;
+    /* MOBILE - Ordine sequenziale corretto */
+    @media (max-width: 768px) {
+
+        .chi-siamo-block,
+        .chi-siamo-block.reverse {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            direction: ltr;
+            /* Reset direzione */
+        }
+
+        /* Blocco 1: Testo poi Immagine */
+        .chi-siamo-block:nth-of-type(1) .chi-siamo-text {
+            order: 1;
+        }
+
+        .chi-siamo-block:nth-of-type(1) .chi-siamo-image {
+            order: 2;
+        }
+
+        /* Blocco 2 (reverse): Testo poi Immagine */
+        .chi-siamo-block:nth-of-type(2) .chi-siamo-text {
+            order: 1;
+        }
+
+        .chi-siamo-block:nth-of-type(2) .chi-siamo-image {
+            order: 2;
+        }
+
+        /* Blocco 3: Testo poi Immagine */
+        .chi-siamo-block:nth-of-type(3) .chi-siamo-text {
+            order: 1;
+        }
+
+        .chi-siamo-block:nth-of-type(3) .chi-siamo-image {
+            order: 2;
+        }
+
+        /* Immagini più compatte su mobile */
+        .chi-siamo-image img {
+            height: 280px;
+        }
+
+        .chi-siamo-text h3 {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .chi-siamo-text p {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .chi-siamo-quote {
+            padding: 2rem 1.5rem;
+        }
+
+        .chi-siamo-quote blockquote {
+            padding: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .chi-siamo-signature {
+            font-size: 1.1rem;
+        }
     }
 
-    .chi-siamo-image img {
-        height: 300px;
-    }
+    @media (max-width: 480px) {
+        .chi-siamo-image img {
+            height: 240px;
+        }
 
-    .chi-siamo-text h3 {
-        font-size: 2rem;
-    }
+        .chi-siamo-text h3 {
+            font-size: 1.7rem;
+        }
 
-    .chi-siamo-quote {
-        padding: 2rem 1rem;
+        .chi-siamo-text p {
+            font-size: 0.95rem;
+        }
     }
 
     /* About & Contact Mobile */
