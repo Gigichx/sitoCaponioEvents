@@ -42,16 +42,16 @@ const contactForm = document.querySelector('form');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const submitButton = contactForm.querySelector('.submit-button');
         const originalText = submitButton.textContent;
-        
+
         // Disable button and show loading state
         submitButton.disabled = true;
         submitButton.textContent = 'Invio in corso...';
         submitButton.style.opacity = '0.7';
         submitButton.style.cursor = 'not-allowed';
-        
+
         try {
             const formData = new FormData(contactForm);
             const response = await fetch(contactForm.action, {
@@ -61,16 +61,16 @@ if (contactForm) {
                     'Accept': 'application/json'
                 }
             });
-            
+
             if (response.ok) {
                 // Show success message
                 submitButton.textContent = 'Messaggio inviato! ✓';
                 submitButton.style.background = '#28a745';
                 submitButton.style.borderColor = '#28a745';
-                
+
                 // Reset form
                 contactForm.reset();
-                
+
                 // Reset button after 3 seconds
                 setTimeout(() => {
                     submitButton.textContent = originalText;
@@ -80,7 +80,7 @@ if (contactForm) {
                     submitButton.style.opacity = '1';
                     submitButton.style.cursor = 'pointer';
                 }, 3000);
-                
+
                 // Show success notification
                 showNotification('Grazie per averci contattato! Ti risponderemo al più presto.', 'success');
             } else {
@@ -91,7 +91,7 @@ if (contactForm) {
             submitButton.textContent = 'Errore - Riprova';
             submitButton.style.background = '#dc3545';
             submitButton.style.borderColor = '#dc3545';
-            
+
             setTimeout(() => {
                 submitButton.textContent = originalText;
                 submitButton.style.background = '';
@@ -100,7 +100,7 @@ if (contactForm) {
                 submitButton.style.opacity = '1';
                 submitButton.style.cursor = 'pointer';
             }, 3000);
-            
+
             showNotification('Si è verificato un errore. Per favore, riprova più tardi.', 'error');
         }
     });
@@ -113,13 +113,13 @@ function showNotification(message, type) {
     if (existingNotification) {
         existingNotification.remove();
     }
-    
+
     const notification = document.createElement('div');
     notification.className = `form-notification form-notification-${type}`;
     notification.textContent = message;
-    
+
     document.body.appendChild(notification);
-    
+
     // Remove after 5 seconds with fade out
     setTimeout(() => {
         notification.style.opacity = '0';
@@ -327,14 +327,14 @@ const modalPosterContainer = document.querySelector('.evento-modal-poster');
 
 // Apri modal quando si clicca su un evento
 eventoItems.forEach(item => {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function () {
         // Trova l'immagine o il placeholder nell'evento cliccato
         const posterImg = this.querySelector('.evento-poster img');
         const posterPlaceholder = this.querySelector('.placeholder-poster');
-        
+
         // Pulisci il contenuto del modal
         modalPosterContainer.innerHTML = '';
-        
+
         if (posterImg) {
             // Se c'è un'immagine reale, clonala e mostrala nel modal
             const modalImg = document.createElement('img');
@@ -348,7 +348,7 @@ eventoItems.forEach(item => {
             clonedPlaceholder.classList.add('placeholder-poster-large');
             modalPosterContainer.appendChild(clonedPlaceholder);
         }
-        
+
         // Mostra il modal
         eventoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -357,7 +357,7 @@ eventoItems.forEach(item => {
 
 // Chiudi modal cliccando sulla X
 if (modalClose) {
-    modalClose.addEventListener('click', function(e) {
+    modalClose.addEventListener('click', function (e) {
         e.stopPropagation();
         eventoModal.classList.remove('active');
         document.body.style.overflow = '';
@@ -365,7 +365,7 @@ if (modalClose) {
 }
 
 // Chiudi modal cliccando fuori dall'immagine
-eventoModal.addEventListener('click', function(e) {
+eventoModal.addEventListener('click', function (e) {
     if (e.target === eventoModal) {
         eventoModal.classList.remove('active');
         document.body.style.overflow = '';
@@ -373,9 +373,158 @@ eventoModal.addEventListener('click', function(e) {
 });
 
 // Chiudi modal con tasto ESC
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && eventoModal.classList.contains('active')) {
         eventoModal.classList.remove('active');
         document.body.style.overflow = '';
     }
+});
+
+// ============================================
+// SERVIZI STACK CAROUSEL
+// ============================================
+
+class ServiziStackCarousel {
+    constructor() {
+        this.container = document.querySelector('.servizi-stack');
+        if (!this.container) return;
+
+        this.cards = Array.from(document.querySelectorAll('.servizio-stack-card'));
+        this.currentIndex = 0;
+        this.totalCards = this.cards.length;
+        this.isAnimating = false;
+
+        this.init();
+    }
+
+    init() {
+        // Imposta posizioni iniziali
+        this.updateCardPositions();
+
+        // Event listeners controlli
+        document.querySelector('.stack-control.prev')?.addEventListener('click', () => this.prev());
+        document.querySelector('.stack-control.next')?.addEventListener('click', () => this.next());
+
+        // Event listeners indicatori
+        document.querySelectorAll('.indicator').forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        // Swipe support per mobile
+        this.initSwipeSupport();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') this.prev();
+            if (e.key === 'ArrowRight') this.next();
+        });
+
+        console.log('✅ Stack Carousel inizializzato');
+    }
+
+    updateCardPositions() {
+        this.cards.forEach((card, index) => {
+            // Rimuovi tutte le classi
+            card.classList.remove('active', 'behind-1', 'behind-2', 'behind-3', 'exit-left', 'exit-right');
+
+            const position = (index - this.currentIndex + this.totalCards) % this.totalCards;
+
+            if (position === 0) {
+                card.classList.add('active');
+            } else if (position === 1) {
+                card.classList.add('behind-1');
+            } else if (position === 2) {
+                card.classList.add('behind-2');
+            } else if (position === 3) {
+                card.classList.add('behind-3');
+            }
+        });
+
+        // Aggiorna indicatori
+        document.querySelectorAll('.indicator').forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentIndex);
+        });
+    }
+
+    next() {
+        if (this.isAnimating) return;
+
+        this.isAnimating = true;
+
+        // Animazione exit per la card corrente
+        const currentCard = this.cards[this.currentIndex];
+        currentCard.classList.add('exit-left');
+
+        // Aspetta l'animazione prima di aggiornare
+        setTimeout(() => {
+            this.currentIndex = (this.currentIndex + 1) % this.totalCards;
+            this.updateCardPositions();
+            this.isAnimating = false;
+        }, 300);
+    }
+
+    prev() {
+        if (this.isAnimating) return;
+
+        this.isAnimating = true;
+
+        const currentCard = this.cards[this.currentIndex];
+        currentCard.classList.add('exit-right');
+
+        setTimeout(() => {
+            this.currentIndex = (this.currentIndex - 1 + this.totalCards) % this.totalCards;
+            this.updateCardPositions();
+            this.isAnimating = false;
+        }, 300);
+    }
+
+    goToSlide(index) {
+        if (this.isAnimating || index === this.currentIndex) return;
+
+        this.isAnimating = true;
+
+        const direction = index > this.currentIndex ? 'exit-left' : 'exit-right';
+        const currentCard = this.cards[this.currentIndex];
+        currentCard.classList.add(direction);
+
+        setTimeout(() => {
+            this.currentIndex = index;
+            this.updateCardPositions();
+            this.isAnimating = false;
+        }, 300);
+    }
+
+    initSwipeSupport() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        this.container.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        this.container.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe();
+        }, { passive: true });
+
+        const handleSwipe = () => {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    this.next(); // Swipe left
+                } else {
+                    this.prev(); // Swipe right
+                }
+            }
+        };
+
+        this.handleSwipe = handleSwipe;
+    }
+}
+
+// Inizializza al caricamento
+document.addEventListener('DOMContentLoaded', () => {
+    new ServiziStackCarousel();
 });
