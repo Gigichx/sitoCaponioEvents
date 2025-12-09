@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria - Caponio Events</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/CSS/style.css">
+    <link rel="stylesheet" href="static/CSS/galleria.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="icon" type="image/x-icon" href="static/CSS/IMG/504201617_122131284686668829_8649897990194310644_n.jpg">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html#home" class="logo">
+                <div class="logo-circle"></div>
+                <img class="logo-img" src="static/CSS/IMG/logo Caponio remove.png" alt="">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#eventi-programma">Eventi in Programma</a></li>
+                <li><a href="index.html#servizi">Servizi</a></li>
+                <li><a href="index.html#collaboratori">Collaboratori</a></li>
+                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
+                <li><a href="index.html#album">Album</a></li>
+                <li><a href="index.html#contatti">Contatti</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Galleria -->
+    <section class="galleria-hero">
+        <div class="hero-content">
+            <h1>Album</h1>
+            <p>Tutti i momenti indimenticabili che abbiamo creato</p>
+        </div>
+    </section>
+
+    <!-- Griglia Foto -->
+    <section class="galleria-grid-section">
+        <div class="galleria-grid" id="galleriaGrid">
+
+            <!-- Esempio foto - DUPLICA questo blocco per ogni foto -->
+            <div class="galleria-item">
+                <img src="URL_FOTO_1" alt="Evento Caponio">
+                <div class="galleria-item-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+
+            <div class="galleria-item">
+                <img src="URL_FOTO_2" alt="Evento Caponio">
+                <div class="galleria-item-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+
+            <!-- Aggiungi tutte le altre foto qui... -->
+
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" alt="">
+        <div class="lightbox-controls">
+            <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/caponio_events/" target="_blank"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a
+                href="https://www.facebook.com/permalink.php?story_fbid=pfbid06GfTX9Vud4KFRAReWpNE2Lyr6zSFAkrwEm1oxVa3drtmcU1g16Rgjt184dEHQ8nSl&id=61570064870122"><i
+                    class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@giuseppecaponio2013"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 Caponio Events. Tutti i diritti riservati.</p>
+        <p style="color: #666; margin-top: 1rem;">Organizziamo emozioni dal 2024</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/JS/galleria.js"></script>
+</body>
+
+</html>

@@ -27,6 +27,7 @@
                 <li><a href="#servizi">Servizi</a></li>
                 <li><a href="#collaboratori">Collaboratori</a></li>
                 <li><a href="#chi-siamo">Chi Siamo</a></li>
+                <li><a href="#album">Album</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
@@ -159,15 +160,17 @@
                                         alt="Luigi Lattanzio"></div>
                                 <h3><strong>Luigi Lattanzio</strong></h3>
                                 <p class="collaboratore-role">Web Dev & Drone Pilot</p>
-                                <p class="collaboratore-description">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                    elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p class="collaboratore-description">Sviluppatore web full-stack e pilota drone
+                                    certificato ENAC. Unisco tecnologia e creatività per realizzare soluzioni digitali
+                                    su misura e riprese aeree d’impatto.</p>
                                 <div class="collaboratore-tags">
                                     <span>Web Developer</span>
                                     <span>Drone Pilot</span>
                                     <span>Videomaker</span>
-                                    <span><a href="https://gigichx.github.io/portfolio/" target="_blank"
-                                            rel="noopener noreferrer"><i
-                                                class="fa-solid fa-share-from-square"></i></a></span>
+                                    <span class="portfolio-link-icon" data-url="https://gigichx.github.io/portfolio/"
+                                        title="Clicca per aprire il portfolio">
+                                        <i class="fa-solid fa-share-from-square"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -322,6 +325,50 @@
             </div>
         </div>
     </section>
+
+    <!-- Album Section -->
+    <section id="album">
+        <h2 class="section-title">Album</h2>
+
+        <div class="album-preview-grid">
+            <div class="album-preview-item" data-album="1">
+                <img src="URL_FOTO_1" alt="Evento 1">
+                <div class="album-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="album-preview-item" data-album="2">
+                <img src="URL_FOTO_2" alt="Evento 2">
+                <div class="album-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="album-preview-item" data-album="3">
+                <img src="URL_FOTO_3" alt="Evento 3">
+                <div class="album-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="album-preview-item" data-album="4">
+                <img src="URL_FOTO_4" alt="Evento 4">
+                <div class="album-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-cta">
+            <a href="galleria.html" class="cta-button">Vedi Tutte le Foto</a>
+        </div>
+    </section>
+
+    <!-- MODAL PER ALBUM - Aggiungi dopo la sezione #album -->
+    <div id="albumModal" class="album-modal">
+        <div class="album-modal-content">
+            <span class="album-modal-close">&times;</span>
+            <img class="album-modal-img" src="" alt="">
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contatti">

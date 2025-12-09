@@ -1,3 +1,27 @@
+// ============================================
+// FIX: Previeni apertura automatica link su mobile
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const externalLinks = document.querySelectorAll('.collaboratore-tags a');
+
+    externalLinks.forEach(link => {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const url = this.getAttribute('href');
+            if (url) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        });
+    });
+
+    console.log('✅ Fix mobile auto-open applicato');
+});
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -527,4 +551,80 @@ class ServiziStackCarousel {
 // Inizializza al caricamento
 document.addEventListener('DOMContentLoaded', () => {
     new ServiziStackCarousel();
+});
+
+// ============================================
+// ALBUM MODAL FUNCTIONALITY
+// ============================================
+
+const albumModal = document.getElementById('albumModal');
+const albumItems = document.querySelectorAll('.album-preview-item');
+const albumModalClose = document.querySelector('.album-modal-close');
+const albumModalImg = document.querySelector('.album-modal-img');
+
+// Apri modal quando si clicca su una foto
+albumItems.forEach(item => {
+    item.addEventListener('click', function () {
+        const img = this.querySelector('img');
+        if (img) {
+            albumModalImg.src = img.src;
+            albumModalImg.alt = img.alt;
+            albumModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
+// Chiudi modal cliccando sulla X
+if (albumModalClose) {
+    albumModalClose.addEventListener('click', function (e) {
+        e.stopPropagation();
+        albumModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+}
+
+// Chiudi modal cliccando fuori dall'immagine
+albumModal?.addEventListener('click', function (e) {
+    if (e.target === albumModal) {
+        albumModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Chiudi modal con tasto ESC
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && albumModal?.classList.contains('active')) {
+        albumModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Previeni click destro sulle immagini album e galleria
+document.querySelectorAll('.album-preview-item img, .galleria-item img, .album-modal-img').forEach(img => {
+    img.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Previeni drag
+    img.addEventListener('dragstart', function (e) {
+        e.preventDefault();
+        return false;
+    });
+});
+
+// Gestione portfolio icon - click manuale
+document.querySelectorAll('.portfolio-link-icon').forEach(icon => {
+    icon.style.cursor = 'pointer';
+
+    icon.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const url = this.getAttribute('data-url');
+        if (url) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+    });
 });
