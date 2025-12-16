@@ -953,6 +953,11 @@ section h3 strong {
    COLLABORATORI - FIX FRECCE MOBILE DEFINITIVO
    ============================================ */
 
+#collaboratoriCarousel {
+    position: relative;
+    overflow: visible;
+}
+
 /* Desktop - Frecce ai lati */
 #collaboratoriCarousel .carousel-control-prev,
 #collaboratoriCarousel .carousel-control-next {
@@ -964,6 +969,7 @@ section h3 strong {
     transform: translateY(-50%);
     opacity: 1;
     transition: all 0.3s ease;
+    position: absolute;
 }
 
 #collaboratoriCarousel .carousel-control-prev {
@@ -1017,42 +1023,37 @@ section h3 strong {
     }
 }
 
-/* MOBILE - Frecce sotto centrate */
+/* MOBILE - Frecce ai lati interni */
 @media (max-width: 768px) {
     #collaboratoriCarousel {
-        padding-bottom: 70px;
-    }
-
-    #collaboratoriCarousel .carousel-inner {
-        margin-bottom: 20px;
+        padding: 0;
     }
 
     #collaboratoriCarousel .carousel-control-prev,
     #collaboratoriCarousel .carousel-control-next {
-        top: auto;
-        bottom: 0;
-        transform: none;
-        width: 50px;
-        height: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
         opacity: 1;
         z-index: 10;
     }
 
     #collaboratoriCarousel .carousel-control-prev {
-        left: calc(50% - 70px);
+        left: 10px;
     }
 
     #collaboratoriCarousel .carousel-control-next {
-        right: calc(50% - 70px);
+        right: 10px;
     }
 
     #collaboratoriCarousel .carousel-control-prev:hover,
     #collaboratoriCarousel .carousel-control-next:hover {
-        transform: scale(1.1);
+        transform: translateY(-50%) scale(1.1);
     }
 
     #collaboratoriCarousel .carousel-indicators {
-        bottom: -15px;
+        bottom: -40px;
     }
 
     .collaboratore-card {
