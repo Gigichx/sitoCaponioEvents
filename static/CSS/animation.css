@@ -373,27 +373,27 @@ nav {
 }
 
 /* Transizioni carousel più morbide */
-#collaboratoriCarousel .carousel-item {
+.section-carousel .carousel-item {
     transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
 
-#collaboratoriCarousel .carousel-item-next,
-#collaboratoriCarousel .carousel-item-prev {
+.section-carousel .carousel-item-next,
+.section-carousel .carousel-item-prev {
     opacity: 0;
 }
 
-#collaboratoriCarousel .carousel-item.active {
+.section-carousel .carousel-item.active {
     opacity: 1;
 }
 
 /* Controlli carousel con animazione */
-#collaboratoriCarousel .carousel-control-prev,
-#collaboratoriCarousel .carousel-control-next {
+.section-carousel .carousel-control-prev,
+.section-carousel .carousel-control-next {
     transition: all 0.3s ease;
 }
 
-#collaboratoriCarousel .carousel-control-prev:hover,
-#collaboratoriCarousel .carousel-control-next:hover {
+.section-carousel .carousel-control-prev:hover,
+.section-carousel .carousel-control-next:hover {
     transform: translateY(-50%) scale(1.1);
 }
 
