@@ -628,3 +628,129 @@ document.querySelectorAll('.portfolio-link-icon').forEach(icon => {
         }
     });
 });
+
+// ============================================
+// CAROUSEL EVENTI MOBILE ADAPTATION
+// ============================================
+document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector("#eventiCarousel");
+    if (!carousel) return;
+
+    const inner = carousel.querySelector(".carousel-inner");
+    const indicatorsContainer = carousel.querySelector(".carousel-indicators");
+    if (!inner) return;
+
+    const isMobile = () => window.matchMedia("(max-width: 767.98px)").matches;
+
+    // Salviamo l'HTML originale per ripristino
+    const originalHTML = inner.innerHTML;
+    const originalIndicatorsHTML = indicatorsContainer ? indicatorsContainer.innerHTML : "";
+
+    const rebuildIndicators = (count) => {
+        if (!indicatorsContainer) return;
+        indicatorsContainer.innerHTML = "";
+        for (let i = 0; i < count; i++) {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.setAttribute("data-bs-target", "#eventiCarousel");
+            btn.setAttribute("data-bs-slide-to", i);
+            btn.ariaLabel = `Slide ${i + 1}`;
+            if (i === 0) {
+                btn.className = "active";
+                btn.setAttribute("aria-current", "true");
+            }
+            indicatorsContainer.appendChild(btn);
+        }
+    };
+
+    const buildMobileSlides = () => {
+        const cols = Array.from(inner.querySelectorAll(".evento-col"));
+        if (cols.length === 0) return;
+
+        inner.innerHTML = "";
+        cols.forEach((col, index) => {
+            const slide = document.createElement("div");
+            slide.className = "carousel-item" + (index === 0 ? " active" : "");
+
+            const row = document.createElement("div");
+            row.className = "row g-4 justify-content-center";
+
+            const colClone = col.cloneNode(true);
+            colClone.className = "col-12 evento-col"; // Forza col-12 su mobile
+
+            row.appendChild(colClone);
+            slide.appendChild(row);
+            inner.appendChild(slide);
+        });
+
+        rebuildIndicators(cols.length);
+        reinitCarousel();
+        reinitModalListeners();
+    };
+
+    const reinitCarousel = () => {
+        // Reinizializza l'istanza di Bootstrap
+        if (typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
+            const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
+            bsCarousel.dispose();
+            new bootstrap.Carousel(carousel, {
+                ride: 'carousel',
+                interval: 5000
+            });
+        }
+    };
+
+    const reinitModalListeners = () => {
+        const newEventoItems = inner.querySelectorAll('.evento-item');
+        const eventoModal = document.getElementById('eventoModal');
+        const modalPosterContainer = document.querySelector('.evento-modal-poster');
+
+        newEventoItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const posterImg = this.querySelector('.evento-poster img');
+                const posterPlaceholder = this.querySelector('.placeholder-poster');
+                modalPosterContainer.innerHTML = '';
+
+                if (posterImg) {
+                    const modalImg = document.createElement('img');
+                    modalImg.src = posterImg.src;
+                    modalImg.alt = posterImg.alt;
+                    modalPosterContainer.appendChild(modalImg);
+                } else if (posterPlaceholder) {
+                    const clonedPlaceholder = posterPlaceholder.cloneNode(true);
+                    clonedPlaceholder.classList.remove('placeholder-poster');
+                    clonedPlaceholder.classList.add('placeholder-poster-large');
+                    modalPosterContainer.appendChild(clonedPlaceholder);
+                }
+                eventoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+    };
+
+    const apply = () => {
+        if (isMobile()) {
+            // Se siamo già in modalità mobile e abbiamo già splitato, non rifare tutto
+            if (inner.querySelectorAll('.carousel-item').length > 4) return;
+            buildMobileSlides();
+        } else {
+            // Se siamo in modalità desktop e abbiamo gli indicatori mobile, ripristina
+            if (indicatorsContainer && indicatorsContainer.querySelectorAll('button').length > 4) {
+                inner.innerHTML = originalHTML;
+                indicatorsContainer.innerHTML = originalIndicatorsHTML;
+                reinitCarousel();
+                reinitModalListeners();
+            }
+        }
+    };
+
+    // Prima applicazione
+    apply();
+
+    // Ricalcolo al resize (con debounce leggero)
+    let t;
+    window.addEventListener("resize", () => {
+        clearTimeout(t);
+        t = setTimeout(apply, 200);
+    });
+});

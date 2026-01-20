@@ -353,6 +353,13 @@ nav.scrolled {
     box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
 }
 
+@media (max-width: 767.98px) {
+    .evento-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
 /* ============================================
    SEZIONI GLOBALI
    ============================================ */
@@ -1039,8 +1046,8 @@ section h3 strong {
         width: 100vw;
         margin-left: calc(-50vw + 50%); /* Centra il container full-width rispetto alla sezione con padding */
         position: relative;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        transform: none;
     }
 
     .section-carousel .carousel-control-prev,
