@@ -409,83 +409,249 @@ section h3 strong {
     font-weight: inherit;
 }
 
-/* ============================================
-   EVENTI IN PROGRAMMA
-   ============================================ */
-
+/* ==========================================
+           SEZIONE GENERALE
+        ========================================== */
 #eventi-programma {
-    background: linear-gradient(145deg, rgba(10, 10, 10, 0.98), rgba(26, 26, 26, 0.95));
+    padding: 5rem 5%;
+    background: var(--black);
 }
 
-.eventi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3.5rem;
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--white), var(--light-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--light-gray);
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+}
+
+/* ==========================================
+           PROSSIMO EVENTO - SEZIONE IN EVIDENZA
+        ========================================== */
+.next-event-section {
+    margin-bottom: 5rem;
+}
+
+.next-event-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-red);
+    color: var(--white);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    animation: pulse 2s infinite;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7),
+            0 4px 15px rgba(230, 57, 70, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 15px rgba(230, 57, 70, 0),
+            0 4px 15px rgba(230, 57, 70, 0.4);
+    }
+}
+
+.next-event-wrapper {
+    text-align: center;
+}
+
+.next-event-card {
+    background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(10, 10, 10, 0.98));
+    border: 2px solid rgba(230, 57, 70, 0.4);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(230, 57, 70, 0.2);
+    cursor: pointer;
+}
+
+.next-event-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(230, 57, 70, 0.1),
+            transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+}
+
+.next-event-card:hover::before {
+    left: 100%;
+}
+
+.next-event-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(230, 57, 70, 0.7);
+    box-shadow: 0 30px 80px rgba(230, 57, 70, 0.3),
+        0 0 60px rgba(230, 57, 70, 0.3);
+}
+
+.next-event-poster-container {
+    position: relative;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.next-event-poster-container img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.next-event-card:hover .next-event-poster-container img {
+    transform: scale(1.05);
+}
+
+.next-event-date {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.next-event-date i {
+    font-size: 1.5rem;
+}
+
+.next-event-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.next-event-info {
+    font-size: 1.1rem;
+    color: var(--light-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.next-event-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-red);
+    color: var(--white);
+    padding: 0.9rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
+    position: relative;
+    z-index: 10;
+}
+
+.next-event-cta:hover {
+    background: var(--dark-red);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(230, 57, 70, 0.6);
+}
+
+/* ==========================================
+           ALTRI EVENTI - CAROSELLO (COME ORIGINALE)
+        ========================================== */
+.all-events-section {
+    margin-top: 5rem;
+}
+
+.all-events-title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--white);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.all-events-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--primary-red);
+    border-radius: 2px;
+}
+
+/* Carosello Bootstrap (stili originali mantenuti) */
+.section-carousel {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel-item {
+    padding: 2rem 0;
+}
+
+.evento-col {
+    margin-bottom: 2rem;
 }
 
 .evento-item {
-    background: rgba(20, 20, 20, 0.85);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(230, 57, 70, 0.25);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
     position: relative;
-}
-
-.evento-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(230, 57, 70, 0.2);
 }
 
 .evento-item:hover {
-    transform: translateY(-12px) scale(1.02);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(230, 57, 70, 0.3);
     border-color: rgba(230, 57, 70, 0.5);
-    box-shadow: 0 30px 50px rgba(230, 57, 70, 0.25);
-}
-
-.evento-item:hover::before {
-    opacity: 1;
 }
 
 .evento-poster {
     width: 100%;
-    aspect-ratio: 1 / 1.414;
-    /* Formato A4 */
-    overflow: hidden;
-    position: relative;
-    background: var(--dark-gray);
-}
-
-.placeholder-poster {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%);
-    color: var(--primary-red);
-}
-
-.placeholder-poster i {
-    font-size: 4rem;
-    opacity: 0.6;
-}
-
-.placeholder-poster p {
-    font-size: 1.1rem;
-    color: var(--light-gray);
-    font-weight: 500;
+    aspect-ratio: 3/4;
 }
 
 .evento-poster img {
@@ -496,38 +662,55 @@ section h3 strong {
 }
 
 .evento-item:hover .evento-poster img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
-.evento-info {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+/* Indicatori carousel */
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(230, 57, 70, 0.4);
+    border: none;
+    transition: all 0.3s ease;
 }
 
-.evento-info h3 {
-    font-size: 1.3rem;
-    color: var(--white);
-    margin-bottom: 0.5rem;
+.carousel-indicators button.active {
+    background: var(--primary-red);
+    width: 30px;
+    border-radius: 6px;
 }
 
-.evento-date,
-.evento-location {
-    color: var(--light-gray);
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+/* Controlli carousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(230, 57, 70, 0.8);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
 }
 
-.evento-date i,
-.evento-location i {
-    color: var(--primary-red);
-    font-size: 1rem;
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+    background: var(--primary-red);
 }
 
-/* Modal Evento */
+.carousel-control-prev {
+    left: -25px;
+}
+
+.carousel-control-next {
+    right: -25px;
+}
+
+/* ==========================================
+           MODAL
+        ========================================== */
 .evento-modal {
     display: none;
     position: fixed;
@@ -536,22 +719,30 @@ section h3 strong {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
-    animation: fadeIn 0.3s ease;
 }
 
 .evento-modal.active {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: fadeIn 0.3s ease;
 }
 
 .evento-modal-content {
     position: relative;
     max-width: 90vw;
     max-height: 90vh;
-    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: scaleIn 0.3s ease;
+}
+
+.evento-modal-poster img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
 }
 
 .evento-modal-close {
@@ -560,69 +751,91 @@ section h3 strong {
     right: 0;
     color: var(--white);
     font-size: 3rem;
-    font-weight: 300;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10001;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(230, 57, 70, 0.8);
+    background: var(--primary-red);
     border-radius: 50%;
-    line-height: 1;
+    transition: all 0.3s ease;
 }
 
 .evento-modal-close:hover {
-    color: var(--primary-red);
     transform: rotate(90deg);
-    background: rgba(230, 57, 70, 1);
+    background: var(--dark-red);
 }
 
-.evento-modal-poster {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-.placeholder-poster-large {
-    width: 60vw;
-    max-width: 800px;
-    aspect-ratio: 1 / 1.414;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%);
-    border-radius: 10px;
-    border: 2px solid rgba(230, 57, 70, 0.3);
-    color: var(--primary-red);
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-.placeholder-poster-large i {
-    font-size: 6rem;
-    opacity: 0.6;
-}
+/* ==========================================
+           RESPONSIVE
+        ========================================== */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
 
-.placeholder-poster-large p {
-    font-size: 1.5rem;
-    color: var(--light-gray);
-    font-weight: 500;
-}
+    .next-event-badge {
+        font-size: 0.8rem;
+        padding: 0.5rem 1.2rem;
+    }
 
-.evento-modal-poster img {
-    max-width: 60vw;
-    max-height: 85vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    border: 2px solid rgba(230, 57, 70, 0.3);
+    .next-event-card {
+        padding: 1.5rem;
+    }
+
+    .next-event-date {
+        font-size: 1.4rem;
+    }
+
+    .next-event-title {
+        font-size: 1.5rem;
+    }
+
+    .next-event-info {
+        font-size: 1rem;
+    }
+
+    .all-events-title {
+        font-size: 1.6rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .evento-modal-close {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
+    }
 }
 
 /* ============================================
@@ -1041,10 +1254,12 @@ section h3 strong {
 /* MOBILE - Frecce ai lati esterni del contenuto */
 @media (max-width: 768px) {
     .section-carousel {
-        padding: 0 50px; /* Spazio generoso per le frecce ai lati */
+        padding: 0 50px;
+        /* Spazio generoso per le frecce ai lati */
         overflow: visible;
         width: 100vw;
-        margin-left: calc(-50vw + 50%); /* Centra il container full-width rispetto alla sezione con padding */
+        margin-left: calc(-50vw + 50%);
+        /* Centra il container full-width rispetto alla sezione con padding */
         position: relative;
         left: 0;
         transform: none;
