@@ -51,118 +51,96 @@
         <h2 class="section-title">Eventi in Programma</h2>
         <p class="section-subtitle">Scopri i nostri prossimi appuntamenti</p>
 
-        <!-- ==========================================
-             PROSSIMO EVENTO - IN EVIDENZA
-        ========================================== -->
-        <div class="next-event-section">
-            <div class="next-event-wrapper">
-                <div class="next-event-badge">
-                    <i class="fas fa-star"></i>
-                    Prossimo Evento
+
+        <!-- Carosello Bootstrap (IDENTICO AL TUO ORIGINALE) -->
+        <div id="eventiCarousel" class="carousel slide section-carousel" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#eventiCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#eventiCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-6 col-md-4 col-lg-3 evento-col">
+                            <div class="evento-item" data-evento="1">
+                                <div class="evento-poster">
+                                    <img src="https://files.fm/thumb_show.php?i=djybhy54xd" alt="Evento 1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-3 evento-col">
+                            <div class="evento-item" data-evento="1">
+                                <div class="evento-poster">
+                                    <img src="https://files.fm/thumb_show.php?i=mvyjkrfhj2" alt="Evento 2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 evento-col">
+                            <div class="evento-item" data-evento="2">
+                                <div class="evento-poster">
+                                    <img src="https://files.fm/thumb_show.php?i=787fv94jae" alt="Evento 3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 evento-col">
+                            <div class="evento-item" data-evento="3">
+                                <div class="evento-poster">
+                                    <img src="https://files.fm/thumb_show.php?i=22rsr7g3xv" alt="Evento 4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="next-event-card" data-next-evento="1">
-                    <div class="next-event-poster-container">
-                        <img src="https://files.fm/thumb_show.php?i=mvyjkrfhj2" alt="Prossimo Evento">
-                    </div>
-                    <div class="next-event-date">
-                        <i class="fas fa-calendar-day"></i>
-                        25 Gennaio 2026
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-6 col-md-4 col-lg-3 evento-col">
+                            <div class="evento-item" data-evento="4">
+                                <div class="evento-poster">
+                                    <img src="https://files.fm/thumb_show.php?i=26qyrv72zj" alt="Evento 5">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 evento-col">
+                            <div class="evento-item" data-evento="5">
+                                <div class="evento-poster">
+                                    <img src="https://files.fm/thumb_show.php?i=bu3dkfpgzr" alt="Evento 6">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 evento-col">
+                            <div class="evento-item" data-evento="6">
+                                <div class="evento-poster">
+                                    <img src="https://files.fm/thumb_show.php?i=kwxw388zmw" alt="Evento 7">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 evento-col">
+                            <div class="evento-item" data-evento="7">
+                                <div class="evento-poster">
+                                    <img src="https://files.fm/thumb_show.php?i=fxprpesc9h" alt="Evento 8">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventiCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Precedente</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventiCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Successivo</span>
+            </button>
         </div>
-
-        <!-- ==========================================
-             TUTTI GLI ALTRI EVENTI - CAROSELLO
-        ========================================== -->
-        <div class="all-events-section">
-            <h3 class="all-events-title">Altri Eventi in Programma</h3>
-
-            <!-- Carosello Bootstrap (IDENTICO AL TUO ORIGINALE) -->
-            <div id="eventiCarousel" class="carousel slide section-carousel" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#eventiCarousel" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#eventiCarousel" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#eventiCarousel" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-
-                <div class="carousel-inner">
-                    <!-- Slide 1 -->
-                    <div class="carousel-item active">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-md-6 col-lg-5 evento-col">
-                                <div class="evento-item" data-evento="2">
-                                    <div class="evento-poster">
-                                        <img src="https://files.fm/thumb_show.php?i=787fv94jae" alt="Evento 2">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-5 evento-col">
-                                <div class="evento-item" data-evento="3">
-                                    <div class="evento-poster">
-                                        <img src="https://files.fm/thumb_show.php?i=22rsr7g3xv" alt="Evento 3">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-md-6 col-lg-5 evento-col">
-                                <div class="evento-item" data-evento="4">
-                                    <div class="evento-poster">
-                                        <img src="https://files.fm/thumb_show.php?i=26qyrv72zj" alt="Evento 4">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-5 evento-col">
-                                <div class="evento-item" data-evento="5">
-                                    <div class="evento-poster">
-                                        <img src="https://files.fm/thumb_show.php?i=bu3dkfpgzr" alt="Evento 5">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="carousel-item">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-md-6 col-lg-5 evento-col">
-                                <div class="evento-item" data-evento="6">
-                                    <div class="evento-poster">
-                                        <img src="https://files.fm/thumb_show.php?i=kwxw388zmw" alt="Evento 6">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-5 evento-col">
-                                <div class="evento-item" data-evento="7">
-                                    <div class="evento-poster">
-                                        <img src="https://files.fm/thumb_show.php?i=fxprpesc9h" alt="Evento 7">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="carousel-control-prev" type="button" data-bs-target="#eventiCarousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Precedente</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#eventiCarousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Successivo</span>
-                </button>
-            </div>
         </div>
     </section>
 
@@ -420,25 +398,25 @@
 
         <div class="album-preview-grid">
             <div class="album-preview-item" data-album="1">
-                <img src="https://files.fm/thumb_show.php?i=aeeq8k67vw" alt="Evento 1">
+                <img src="https://files.fm/thumb_show.php?i=xnvqzeyqdf" alt="Evento 1">
                 <div class="album-overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
             </div>
             <div class="album-preview-item" data-album="2">
-                <img src="https://files.fm/thumb_show.php?i=hn7nfxq4sf" alt="Evento 2">
+                <img src="https://files.fm/thumb_show.php?i=966ey7ttvx" alt="Evento 2">
                 <div class="album-overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
             </div>
             <div class="album-preview-item" data-album="3">
-                <img src="https://files.fm/thumb_show.php?i=6zddfrqtp2" alt="Evento 3">
+                <img src="https://files.fm/thumb_show.php?i=99yurw7gvz" alt="Evento 3">
                 <div class="album-overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
             </div>
             <div class="album-preview-item" data-album="4">
-                <img src="https://files.fm/thumb_show.php?i=d8c377jj4r" alt="Evento 4">
+                <img src="https://files.fm/thumb_show.php?i=8nau7vmt67" alt="Evento 4">
                 <div class="album-overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
