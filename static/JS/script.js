@@ -754,3 +754,117 @@ document.addEventListener("DOMContentLoaded", () => {
         t = setTimeout(apply, 200);
     });
 });
+
+// ============================================
+// GENERIC CAROUSEL MOBILE ADAPTATION (Collaboratori, Artisti)
+// ============================================
+(function () {
+    function setupResponsiveCarousel({ carouselId, cardSelector, targetSelectorForIndicators, colClassMobile = 'col-12' }) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+        const inner = carousel.querySelector('.carousel-inner');
+        const indicatorsContainer = carousel.querySelector('.carousel-indicators');
+        if (!inner) return;
+
+        const isMobile = () => window.matchMedia('(max-width: 767.98px)').matches;
+
+        const state = {
+            originalHTML: inner.innerHTML,
+            originalIndicators: indicatorsContainer ? indicatorsContainer.innerHTML : '',
+            applied: false
+        };
+
+        const rebuildIndicators = (count) => {
+            if (!indicatorsContainer) return;
+            indicatorsContainer.innerHTML = '';
+            for (let i = 0; i < count; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.setAttribute('data-bs-target', `#${carouselId}`);
+                btn.setAttribute('data-bs-slide-to', i);
+                btn.ariaLabel = `Slide ${i + 1}`;
+                if (i === 0) {
+                    btn.className = 'active';
+                    btn.setAttribute('aria-current', 'true');
+                }
+                indicatorsContainer.appendChild(btn);
+            }
+        };
+
+        const reinitCarousel = () => {
+            if (typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
+                const instance = bootstrap.Carousel.getOrCreateInstance(carousel);
+                instance.dispose();
+                new bootstrap.Carousel(carousel, {
+                    ride: 'carousel',
+                    interval: 5000
+                });
+            }
+        };
+
+        const buildMobileSlides = () => {
+            const cards = Array.from(inner.querySelectorAll(cardSelector));
+            if (cards.length === 0) return;
+
+            inner.innerHTML = '';
+            cards.forEach((card, index) => {
+                const col = card.parentElement ? card.parentElement.cloneNode(true) : card.cloneNode(true);
+                // Forza la colonna mobile a tutta larghezza
+                if (col.classList) {
+                    col.className = colClassMobile;
+                }
+
+                const row = document.createElement('div');
+                row.className = 'row g-4 justify-content-center';
+                row.appendChild(col);
+
+                const slide = document.createElement('div');
+                slide.className = 'carousel-item' + (index === 0 ? ' active' : '');
+                slide.appendChild(row);
+
+                inner.appendChild(slide);
+            });
+
+            rebuildIndicators(cards.length);
+            reinitCarousel();
+        };
+
+        const apply = () => {
+            if (isMobile()) {
+                if (!state.applied) {
+                    buildMobileSlides();
+                    state.applied = true;
+                }
+            } else {
+                if (state.applied) {
+                    inner.innerHTML = state.originalHTML;
+                    if (indicatorsContainer) indicatorsContainer.innerHTML = state.originalIndicators;
+                    reinitCarousel();
+                    state.applied = false;
+                }
+            }
+        };
+
+        // First run
+        apply();
+        // Debounced resize
+        let timer;
+        window.addEventListener('resize', () => {
+            clearTimeout(timer);
+            timer = setTimeout(apply, 200);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setupResponsiveCarousel({
+            carouselId: 'collaboratoriCarousel',
+            cardSelector: '.collaboratore-card',
+            colClassMobile: 'col-12'
+        });
+        setupResponsiveCarousel({
+            carouselId: 'artistiCarousel',
+            cardSelector: '.artista-card',
+            colClassMobile: 'col-12'
+        });
+    });
+})();
